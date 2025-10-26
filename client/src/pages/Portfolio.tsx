@@ -1,6 +1,7 @@
 import StarField from '@/components/StarField';
 import ThemeToggle from '@/components/ThemeToggle';
 import MouseGlow from '@/components/MouseGlow';
+import FloatingCharacter from '@/components/FloatingCharacter';
 import HomeHero from '@/components/HomeHero';
 import ProjectsSection from '@/components/ProjectsSection';
 import AboutSection from '@/components/AboutSection';
@@ -10,6 +11,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen relative">
       <StarField />
+      <FloatingCharacter />
       <MouseGlow />
       <ThemeToggle />
       

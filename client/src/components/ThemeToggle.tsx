@@ -12,7 +12,7 @@ export default function ThemeToggle() {
   const toggleTheme = () => {
     const newIsDark = !isDark;
     setIsDark(newIsDark);
-    
+
     if (newIsDark) {
       document.body.classList.add('dark');
       document.body.classList.remove('light');
@@ -25,14 +25,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 w-12 h-12 rounded-full glass flex items-center justify-center hover-elevate transition-all duration-300 glow-sm"
+      className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-cyan-600/30 backdrop-blur-md border border-cyan-400/30 flex items-center justify-center hover:scale-105 transition-transform duration-300 shadow-lg"
       aria-label="Toggle theme"
-      data-testid="button-theme-toggle"
     >
       {isDark ? (
-        <Sun className="w-5 h-5 text-primary transition-transform duration-300" />
+        <Sun className="w-6 h-6 text-yellow-400" />
       ) : (
-        <Moon className="w-5 h-5 text-primary transition-transform duration-300" />
+        <Moon className="w-6 h-6 text-gray-200" />
       )}
     </button>
   );

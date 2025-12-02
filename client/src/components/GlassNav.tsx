@@ -6,11 +6,22 @@ export default function GlassNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
+    { name: "Home", href: "#hero" },
     { name: "Features", href: "#features" },
     { name: "About", href: "#about" },
     { name: "Pricing", href: "#pricing" },
     { name: "Contact", href: "#contact" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
@@ -26,14 +37,15 @@ export default function GlassNav() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors hover-elevate px-3 py-2 rounded-lg"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors hover-elevate px-3 py-2 rounded-lg cursor-pointer"
                 data-testid={`link-nav-${item.name.toLowerCase()}`}
               >
                 {item.name}
               </a>
             ))}
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               className="glow-sm"
               data-testid="button-get-started"
             >
@@ -56,16 +68,16 @@ export default function GlassNav() {
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-lg hover-elevate"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="block px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-lg hover-elevate cursor-pointer"
                 data-testid={`link-mobile-nav-${item.name.toLowerCase()}`}
-                onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
             <div className="px-4 pt-2">
-              <Button 
-                size="sm" 
+              <Button
+                size="sm"
                 className="w-full glow-sm"
                 data-testid="button-mobile-get-started"
               >
